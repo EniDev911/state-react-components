@@ -4,9 +4,12 @@ import Button from "./Button";
 const Input = ({ name, password }) => {
 
   const validateInput = (e) => {
+    const cleanBox = () =>{
+      name[1]("")  
+      password[1]("")
+    }
     e.preventDefault();
-    alert("Enviando");
-    name[0] === ""?  alert("Debe ingresar un nombre") : "";
+    name[0] === ""?  alert("Debe ingresar un nombre") : cleanBox();
   } 
   return (
     <Form onSubmit={validateInput} className="p-2 border rounded w-75 bg-dark bg-gradient text-light">
@@ -15,6 +18,7 @@ const Input = ({ name, password }) => {
         <Form.Control 
           type="text" 
           placeholder="Ingrese su nombre" 
+          value={name[0]}
           onChange={(e) => name[1](e.target.value)}/>
       </Form.Group>
       <Form.Group 
@@ -23,6 +27,7 @@ const Input = ({ name, password }) => {
         <Form.Control
           type="password"
           placeholder="Ingrese su password"
+          value={password[0]}
           onChange={(e) => password[1](e.target.value)}
         />
       </Form.Group>
